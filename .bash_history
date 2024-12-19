@@ -15,3 +15,10 @@ git remote add origin https://github.com/yourusername/your-repo.git
 git push -u origin main
 git remote add origin https://github.com/MAJassim/movieReco.git
 git push -u origin main
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/MAJassim/movieReco.git 
+git push -u origin main
+[200~git init

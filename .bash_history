@@ -41,3 +41,7 @@ git add .
 git commit -m "Committing unstaged changes before pulling"
 git pull origin main --rebase
 git status
+git restore .bash_history
+git pull origin main --rebase
+git push -u origin main
+git pull origin main --rebase

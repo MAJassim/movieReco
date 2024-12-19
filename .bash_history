@@ -37,3 +37,7 @@ git remote remove origin
 git remote add origin https://github.com/MAJassim/movieReco.git
 git push -u origin main
 git pull origin main --rebase
+git add .
+git commit -m "Committing unstaged changes before pulling"
+git pull origin main --rebase
+git status

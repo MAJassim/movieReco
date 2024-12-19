@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍿 Movie Recommendation App 🎬</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://wallpapercave.com/wp/wp1839578.jpg'); /* Movie-themed background */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Container */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.85); /* Semi-transparent black */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Header */
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #e50914; /* Netflix Red */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h1:before {
+            content: "🍿";
+            margin-right: 10px;
+        }
+
+        h1:after {
+            content: "🎬";
+            margin-left: 10px;
+        }
+
+        /* Form Labels */
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #bbb;
+            font-weight: bold;
+        }
+
+        label:before {
+            content: "🎞️ ";
+        }
+
+        /* Inputs */
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #222; /* Dark input background */
+            color: white;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        /* Buttons */
+        button {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #f40612;
+            transform: scale(1.02);
+        }
+
+        button:before {
+            content: "🎥 ";
+        }
+
+        /* Results */
+        .result, .error {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .result {
+            background-color: #2ecc71; /* Success Green */
+            color: white;
+            border: 1px solid #27ae60;
+        }
+
+        .result h3 {
+            color: #e50914; /* Netflix Red */
+        }
+
+        .result ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .result ul li {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .result ul li:before {
+            content: "🍿 ";
+        }
+
+        /* Errors */
+        .error {
+            background-color: #e74c3c; /* Error Red */
+            color: white;
+            border: 1px solid #c0392b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            input, button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommendation App</h1>
+        <form id="recommendationForm">
+            <label for="category">Movie Category</label>
+            <input type="text" id="category" name="category" placeholder="Enter a movie category" required />
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        <div id="result" class="result" style="display:none;"></div>
+        <div id="error" class="error" style="display:none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('recommendationForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent the form from refreshing the page
+
+            const category = document.getElementById('category').value;
+            const email = document.getElementById('email').value;
+
+            // Hide previous results or errors
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+
+            try {
+                // Send POST request to the backend
+                const response = await fetch('https://movie-app-func.azurewebsites.net/api/backend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ category, email })
+                });
+
+                if (!response.ok) {
+                    // Capture the error details
+                    const errorText = await response.text();
+                    throw new Error(errorText || 'An error occurred');
+                }
+
+                const data = await response.json();
+
+                // Display the result
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').innerHTML = `
+                    <h3>🎬 Recommendations for ${data.category}</h3>
+                    <ul>
+                        ${data.recommendations.split('\n').map(movie => `<li>${movie}</li>`).join('')}
+                    </ul>
+                `;
+            } catch (error) {
+                // Display error message
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>

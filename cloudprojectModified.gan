@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="cloudProject" company="" webLink="http://" view-date="2024-11-20" view-index="0" gantt-divider-location="351" resource-divider-location="300" version="3.3.3312" locale="fr_FR">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="200" order="0"/>
+        <field id="tpd4" name="Date de début" width="75" order="1"/>
+        <field id="tpd5" name="Date de fin" width="75" order="2"/>
+        <field id="tpd15" name="Notes" width="20" order="3"/>
+        <option id="taskLabelUp" value="name"/>
+        <option id="taskLabelDown" value="length"/>
+        <option id="taskLabelRight" value=""/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#993300 #ff66ff #990000 #ff3399]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="210" order="0"/>
+        <field id="1" name="Rôle par défaut" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" uid="85b2dcd5557f4a7899353929553a88a8" name="Task 1: Choosing the Subject and Cloud Resources (1 Week)" color="#ff66ff" meeting="false" start="2024-11-20" duration="5" complete="0" expand="true">
+            <notes><![CDATA[1)Researched and finalized the topic: an intelligent movie recommendation system.
+
+I2)dentified and selected Azure services: Static Web App, Azure Function, SQL Database, OpenAI, and Communication Service.
+
+3)Planned the architecture and interactions between these resources.]]></notes>
+        </task>
+        <task id="1" uid="874c000e3ef6467ba1fd4c4ddd36d677" name="Task 2: Initial Implementation (1 Week)" color="#ff3399" meeting="false" start="2024-11-27" duration="6" complete="0" expand="true">
+            <notes><![CDATA[1)Developed the Static Web App for user interaction using HTML, CSS, and JavaScript.
+
+2)Set up Azure Function to handle API requests and connect the front-end to back-end services.
+
+3)Configured the SQL Database to store movie details and user preferences.]]></notes>
+        </task>
+        <task id="2" uid="1612484bf51a464db3926dfce5d1e55c" name="Task 3: Advanced Implementation and Integration (1 Week)" color="#990000" meeting="false" start="2024-12-05" duration="6" complete="0" expand="true">
+            <notes><![CDATA[1)Integrated OpenAI to generate intelligent recommendations based on user input.
+2)Connected the Communication Service to send notifications and updates to users.
+3)Tested the entire system to ensure seamless interactions between all resources.]]></notes>
+        </task>
+        <task id="3" uid="431a85e155f045639d0961097a361356" name="Task 4: Presentation and Demo (1 Week)" color="#993300" meeting="false" start="2024-12-13" duration="7" complete="0" expand="true">
+            <notes><![CDATA[1)Prepared a live demonstration, showcasing how each resource interacts.
+2)Created a detailed explanation of the system architecture and its functionality.
+3)Presented the project and performed a live demo to highlight the app's capabilities.
+]]></notes>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
